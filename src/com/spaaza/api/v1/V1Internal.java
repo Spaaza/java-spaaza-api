@@ -31,5 +31,12 @@ public class V1Internal {
 		return Auth.fromAPIResponse(r);
 	}
 
-
+	public Auth loginFB(String accessToken) throws IOException, APIException {
+		Map<String, String> args = new HashMap<String, String>();
+		args.put("fb_access_token", accessToken);
+		args.put("fb_access_token_expires", "7200");
+		APIResponse r = client.request(Method.POST, "internal/login-fb.json", args);
+		return Auth.fromAPIResponse(r);
+	}
+	
 }

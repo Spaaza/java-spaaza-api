@@ -40,4 +40,10 @@ public class APITest extends TestCase {
 		//client.v1.internal.signup("foo@bar.com", "Arjan", "test", "aapaap", "1999-01-01", "F", "xxx");
 	}
 	
+	public void testLoginFB() throws IOException, APIException {
+		String token = "CAADPxlzKZBy8BAH2QJdWPLqsEn21ZAnMuoLsGOrrZAXZC1JcI1WNHO2FzEhAPwXTYTJRwKswHuoZCf8VrqZB3k4ipJ9qqdvy9mFXQZApZAXPV8sf68HAIvEmeofoQsl98PZCUD8B9x40fzezSuNWqgz2Vq9SneNEgUgeno9KUtERunmuu7QtlopWjlb5io3qL6XUZD";
+		//client.v1.internal.loginFB(token);
+		
+	}
+	
 }
