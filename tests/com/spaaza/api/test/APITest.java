@@ -36,4 +36,8 @@ public class APITest extends TestCase {
 		assertEquals("admin@spaaza.com", s.username);
 	}
 	
+	public void testSignup() throws IOException, APIException {
+		//client.v1.internal.signup("foo@bar.com", "Arjan", "test", "aapaap", "1999-01-01", "F", "xxx");
+	}
+	
 }

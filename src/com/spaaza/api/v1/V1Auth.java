@@ -26,9 +26,7 @@ public class V1Auth {
 		args.put("username", username);
 		args.put("password", password);
 		APIResponse r = client.request(Method.POST, "auth/login.json", args);
-		
-		JsonNode u = r.results.get("user_info");
-		return new Auth(u.get("id").asText(), r.results.get("session_info").get("session_key").asText());
+		return Auth.fromAPIResponse(r);
 	}
 
 	public LoginStatusResponse getLoginStatus() throws IOException, APIException {

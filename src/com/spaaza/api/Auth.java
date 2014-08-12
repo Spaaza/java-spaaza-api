@@ -1,6 +1,7 @@
 package com.spaaza.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.JsonNode;
 
 public class Auth {
 
@@ -32,5 +33,10 @@ public class Auth {
 
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+
+	public static Auth fromAPIResponse(APIResponse r) {
+		JsonNode u = r.results.get("user_info");
+		return new Auth(u.get("id").asText(), r.results.get("session_info").get("session_key").asText());
 	}
 }

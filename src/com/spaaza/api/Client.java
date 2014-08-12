@@ -11,6 +11,7 @@ import org.jsoup.Jsoup;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.spaaza.api.v1.V1Auth;
+import com.spaaza.api.v1.V1Internal;
 import com.spaaza.api.v1.V1Public;
 
 public class Client {
@@ -92,10 +93,12 @@ public class Client {
 	public class V1 {
 		public V1Public pub;
 		public V1Auth auth;
+		public V1Internal internal;
 
 		protected V1() {
 			this.pub = new V1Public(Client.this);
 			this.auth = new V1Auth(Client.this);
+			this.internal = new V1Internal(Client.this);
 		}
 	}
 
