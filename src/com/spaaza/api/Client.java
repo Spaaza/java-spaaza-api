@@ -66,7 +66,9 @@ public class Client {
 			connection.header("X-MyPrice-App-Hostname", this.appHostname);
 		}
 
-		// TO DO: X-Spaaza-Request
+		// X-Spaaza-Request
+		connection.header("X-Spaaza-Request", "{\"is_native\":true}");
+		
 		// TO DO: X-Spaaza-UserCookie
 	}
 
