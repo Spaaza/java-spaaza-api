@@ -36,4 +36,54 @@
 			<version>20030203.000550</version>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>external.atlassian.jgitflow</groupId>
+				<artifactId>jgitflow-maven-plugin</artifactId>
+				<version>1.0-m3</version>
+				<configuration>
+					<!-- Enable this to push to origin using SSH keys -->
+					<enableSshAgent>true</enableSshAgent>
+					<!-- Keep your maven submodules at the same version as the parent POM -->
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+					<pushReleases>true</pushReleases>
+					<pushHotfixes>true</pushHotfixes>
+					<!-- For now allow deployments from dev workstations. They should really 
+						be done by Jenkins. -->
+					<noDeploy>false</noDeploy>
+					<flowInitContext>
+						<!-- You can also customize your tag prefixes -->
+						<versionTagPrefix>rev-</versionTagPrefix>
+					</flowInitContext>
+				</configuration>
+			</plugin>
+		</plugins>
+		<extensions>
+			<extension>
+				<groupId>org.kuali.maven.wagons</groupId>
+				<artifactId>maven-s3-wagon</artifactId>
+				<version>1.2.1</version>
+			</extension>
+		</extensions>
+	</build>
+	<distributionManagement>
+		<site>
+			<id>spaaza.s3.site</id>
+			<name>Spaaza S3 Maven Site</name>
+			<url>s3://spaaza-maven-s3-site/site</url>
+		</site>
+		<repository>
+			<id>spaaza.s3.release</id>
+			<name>Spaaza S3 Release Repo</name>
+			<url>s3://spaaza-maven-s3-site/release</url>
+		</repository>
+		<snapshotRepository>
+			<id>spaaza.s3.snapshot</id>
+			<name>Spaaza S3 Snapshot Repo</name>
+			<url>s3://spaaza-maven-s3-site/snapshot</url>
+		</snapshotRepository>
+	</distributionManagement>
+
 </project>
