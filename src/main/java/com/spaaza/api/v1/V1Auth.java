@@ -4,9 +4,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.jsoup.Connection.Method;
-
-import com.fasterxml.jackson.databind.JsonNode;
 import com.spaaza.api.APIException;
 import com.spaaza.api.APIResponse;
 import com.spaaza.api.Auth;
@@ -25,7 +22,7 @@ public class V1Auth {
 		Map<String, String> args = new HashMap<String, String>();
 		args.put("username", username);
 		args.put("password", password);
-		APIResponse r = client.request(Method.POST, "auth/login.json", args);
+		APIResponse r = client.request("POST", "auth/login.json", args);
 		return Auth.fromAPIResponse(r);
 	}
 
@@ -38,7 +35,7 @@ public class V1Auth {
 		args.put("user_id", client.getAuth().getUserId());
 		args.put("session_key", client.getAuth().getSessionKey());
 		
-		APIResponse r = client.request(Method.GET, "auth/get-login-status.json", args);
+		APIResponse r = client.request("GET", "auth/get-login-status.json", args);
 		return Client.getMapper().treeToValue(r.results, LoginStatusResponse.class);
 	}
 

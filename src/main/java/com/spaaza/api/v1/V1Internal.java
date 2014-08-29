@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.jsoup.Connection.Method;
-
 import com.spaaza.api.APIException;
 import com.spaaza.api.APIResponse;
 import com.spaaza.api.Auth;
@@ -27,7 +25,7 @@ public class V1Internal {
 		args.put("birthday", birthday);
 		args.put("gender", gender);
 		args.put("verification_url_template", verificationUrlTemplate);
-		APIResponse r = client.request(Method.POST, "internal/signup.json", args);
+		APIResponse r = client.request("POST", "internal/signup.json", args);
 		return Auth.fromAPIResponse(r);
 	}
 
@@ -35,7 +33,7 @@ public class V1Internal {
 		Map<String, String> args = new HashMap<String, String>();
 		args.put("fb_access_token", accessToken);
 		args.put("fb_access_token_expires", "7200");
-		APIResponse r = client.request(Method.POST, "internal/login-fb.json", args);
+		APIResponse r = client.request("POST", "internal/login-fb.json", args);
 		return Auth.fromAPIResponse(r);
 	}
 	
